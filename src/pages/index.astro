@@ -75,8 +75,12 @@ const facilities = [
             <a href="#nosotros">Nuestra Historia</a>
             <a href="#contacto">Contacto</a>
           </nav>
-          <a class="header-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon /> <span>WhatsApp</span></a>
-          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu"><span class="sr-only">Abrir menú</span><span></span><span></span><span></span></button>
+          <a class="header-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer">
+            <WhatsAppIcon /> <span>WhatsApp</span>
+          </a>
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu">
+            <span class="sr-only">Abrir menú</span><span></span><span></span><span></span>
+          </button>
         </div>
       </header>
 
@@ -87,24 +91,200 @@ const facilities = [
           <p class="eyebrow light">Droguería · Corrientes, Argentina</p>
           <h1>Al servicio de la salud del Nordeste desde <span>1990</span></h1>
           <p class="hero-copy">Droguería habilitada por ANMAT. Proveemos medicamentos, equipamiento e insumos médicos a hospitales, sanatorios, farmacias y profesionales de cinco provincias, con depósito y flota propios en Corrientes.</p>
-          <div class="hero-actions"><a class="button button-cyan" href={whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon /> Pedir un presupuesto</a><a class="button button-ghost" href="#proveemos">Ver qué proveemos <ArrowIcon /></a></div>
+          <div class="hero-actions">
+            <a class="button button-cyan" href={whatsappUrl} target="_blank" rel="noreferrer">
+              <WhatsAppIcon /> Pedir un presupuesto
+            </a>
+            <a class="button button-ghost" href="#proveemos">Ver qué proveemos <ArrowIcon /></a>
+          </div>
         </div>
-        <div class="metrics"><div class="container metrics-grid">
-          {metrics.map(([number, unit, label]) => <div class="metric"><div><strong>{number}</strong>{unit && <sup>{unit}</sup>}</div><span>{label}</span></div>)}
-        </div></div>
+        <div class="metrics">
+          <div class="container metrics-grid">
+            {metrics.map(([number, unit, label]) => (
+              <div class="metric">
+                <div><strong>{number}</strong>{unit && <sup>{unit}</sup>}</div>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section class="section supplies" id="proveemos"><div class="container"><SectionIntro kicker="Qué proveemos" title="Tres líneas, un solo proveedor" copy="Un catálogo pensado para resolver las necesidades cotidianas del sistema de salud, profesionales y familias de la región" /><div class="supply-grid">{supplyLines.map((line) => <article class="supply-column"><h3>{line.title}</h3><ul>{line.items.map((item) => <li>{item}</li>)}</ul><p class="supply-label">{line.label}</p></article>)}</div></div></section>
+      <section class="section supplies" id="proveemos">
+        <div class="container">
+          <SectionIntro
+            kicker="Qué proveemos"
+            title="Tres líneas, un solo proveedor"
+            copy="Un catálogo pensado para resolver las necesidades cotidianas del sistema de salud, profesionales y familias de la región"
+          />
+          <div class="supply-grid">
+            {supplyLines.map((line) => (
+              <article class="supply-column">
+                <h3>{line.title}</h3>
+                <ul>
+                  {line.items.map((item) => <li>{item}</li>)}
+                </ul>
+                <p class="supply-label">{line.label}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section class="section coverage" id="cobertura"><div class="container"><SectionIntro kicker="Cobertura" title="Logística propia, Reposición Inmediata" copy="No dependemos de un centro de distribución en Buenos Aires. Salimos desde Corrientes con vehículos propios, y eso define los tiempos de entrega en toda la región." /><div class="coverage-grid"><div><div class="map-diagram province-map" aria-label="Mapa tridimensional de cobertura en Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe"><div class="province-map-heading"><span class="map-kicker">Cobertura regional</span><strong>5 provincias conectadas</strong></div><div class="province-stage"><svg class="regional-map-figures" viewBox="0 0 520 360" role="img" aria-label="Figuras conectadas de Formosa, Chaco, Corrientes, Misiones y norte de Santa Fe"><g class="map-extrusion" transform="translate(0 9)"><path d="M60 35 95 18 164 42 213 57 257 91 287 105 303 139 278 163 248 176 213 185 185 211 145 214 108 197 68 184 68 137 8 137 8 95 60 95Z"></path><path d="M68 137 108 145 145 166 184 191 216 210 261 207 292 226 280 259 245 283 201 297 169 319 130 317 116 294 123 262 107 241 91 211 67 195Z"></path><path d="M261 207 292 190 326 197 348 216 377 216 401 197 430 199 445 219 430 239 406 245 392 261 367 268 342 253 315 256 290 243Z"></path><path d="M430 199 450 177 468 146 480 105 493 76 507 87 512 118 505 151 494 179 478 207 458 227 439 218Z"></path><path d="M245 283 280 259 313 256 342 270 328 294 307 313 293 342 263 352 236 344 217 326Z"></path></g><g class="map-faces"><path class="figure-formosa" d="M60 27 95 10 164 34 213 49 257 83 287 97 303 131 278 155 248 168 213 177 185 203 145 206 108 189 68 176 68 129 8 129 8 87 60 87Z"></path><path class="figure-chaco" d="M68 129 108 137 145 158 184 183 216 202 261 199 292 218 280 251 245 275 201 289 169 311 130 309 116 286 123 254 107 233 91 203 67 187Z"></path><path class="figure-corrientes" d="M261 199 292 182 326 189 348 208 377 208 401 189 430 191 445 211 430 231 406 237 392 253 367 260 342 245 315 248 290 235Z"></path><path class="figure-misiones" d="M430 191 450 169 468 138 480 97 493 68 507 79 512 110 505 143 494 171 478 199 458 219 439 210Z"></path><path class="figure-santa" d="M245 275 280 251 313 248 342 262 328 286 307 305 293 334 263 344 236 336 217 318Z"></path></g><path class="map-boundary" d="M60 27 95 10 164 34 213 49 257 83 287 97 303 131 278 155 248 168 213 177 185 203 145 206 108 189 68 176 68 129 8 129 8 87 60 87M68 129 108 137 145 158 184 183 216 202 261 199M261 199 292 182 326 189 348 208 377 208 401 189 430 191M430 191 450 169 468 138 480 97 493 68 507 79M245 275 280 251 313 248 342 262"></path></svg><span class="map-region-label label-formosa">Formosa</span><span class="map-region-label label-chaco">Chaco</span><span class="map-region-label label-corrientes">Corrientes</span><span class="map-region-label label-misiones">Misiones</span><span class="map-region-label label-santa">Norte de Santa Fe</span></div><div class="map-center"><b>Corrientes</b><small>depósito Av. Maipú</small></div></div><figure class="fleet-figure"><img src="/images/movi-fleet.png" alt="Tres vehículos blancos de la flota de Científica Movi" /><figcaption>Dos Iveco Daily para larga distancia y una Berlingo para reparto en Corrientes capital.</figcaption></figure></div><div class="coverage-blocks"><InfoBlock title="Mayorista">Hospitales, sanatorios, farmacias, laboratorios, municipios y obras sociales en Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe. Entrega con flota propia y cuenta corriente para clientes institucionales.</InfoBlock><InfoBlock title="Mostrador">Local de venta al público en Córdoba 1491, esquina Rivadavia, Corrientes capital. Ortopedia, rehabilitación, cuidado domiciliario y accesorios para práctica deportiva.</InfoBlock><InfoBlock title="Capacitaciones">Formaciones y talleres prácticos para profesionales de la salud de la región, dictados por especialistas y basados en evidencia actualizada.</InfoBlock></div></div></div></section>
+      <section class="section coverage" id="cobertura">
+        <div class="container">
+          <SectionIntro
+            kicker="Cobertura"
+            title="Logística propia, Reposición Inmediata"
+            copy="No dependemos de un centro de distribución en Buenos Aires. Salimos desde Corrientes con vehículos propios, y eso define los tiempos de entrega en toda la región."
+          />
+          <div class="coverage-grid">
+            <div>
+              <div class="map-diagram province-map" aria-label="Mapa tridimensional de cobertura en Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe">
+                <div class="province-map-heading">
+                  <span class="map-kicker">Cobertura regional</span>
+                  <strong>5 provincias conectadas</strong>
+                </div>
+                <div class="province-stage">
+                  <svg class="regional-map-figures" viewBox="0 0 520 360" role="img" aria-label="Figuras conectadas de Formosa, Chaco, Corrientes, Misiones y norte de Santa Fe">
+                    <g class="map-extrusion" transform="translate(0 9)">
+                      <path d="M60 35 95 18 164 42 213 57 257 91 287 105 303 139 278 163 248 176 213 185 185 211 145 214 108 197 68 184 68 137 8 137 8 95 60 95Z"></path>
+                      <path d="M68 137 108 145 145 166 184 191 216 210 261 207 292 226 280 259 245 283 201 297 169 319 130 317 116 294 123 262 107 241 91 211 67 195Z"></path>
+                      <path d="M261 207 292 190 326 197 348 216 377 216 401 197 430 199 445 219 430 239 406 245 392 261 367 268 342 253 315 256 290 243Z"></path>
+                      <path d="M430 199 450 177 468 146 480 105 493 76 507 87 512 118 505 151 494 179 478 207 458 227 439 218Z"></path>
+                      <path d="M245 283 280 259 313 256 342 270 328 294 307 313 293 342 263 352 236 344 217 326Z"></path>
+                    </g>
+                    <g class="map-faces">
+                      <path class="figure-formosa" d="M60 27 95 10 164 34 213 49 257 83 287 97 303 131 278 155 248 168 213 177 185 203 145 206 108 189 68 176 68 129 8 129 8 87 60 87Z"></path>
+                      <path class="figure-chaco" d="M68 129 108 137 145 158 184 183 216 202 261 199 292 218 280 251 245 275 201 289 169 311 130 309 116 286 123 254 107 233 91 203 67 187Z"></path>
+                      <path class="figure-corrientes" d="M261 199 292 182 326 189 348 208 377 208 401 189 430 191 445 211 430 231 406 237 392 253 367 260 342 245 315 248 290 235Z"></path>
+                      <path class="figure-misiones" d="M430 191 450 169 468 138 480 97 493 68 507 79 512 110 505 143 494 171 478 199 458 219 439 210Z"></path>
+                      <path class="figure-santa" d="M245 275 280 251 313 248 342 262 328 286 307 305 293 334 263 344 236 336 217 318Z"></path>
+                    </g>
+                    <path class="map-boundary" d="M60 27 95 10 164 34 213 49 257 83 287 97 303 131 278 155 248 168 213 177 185 203 145 206 108 189 68 176 68 129 8 129 8 87 60 87M68 129 108 137 145 158 184 183 216 202 261 199M261 199 292 182 326 189 348 208 377 208 401 189 430 191M430 191 450 169 468 138 480 97 493 68 507 79M245 275 280 251 313 248 342 262"></path>
+                  </svg>
+                  <span class="map-region-label label-formosa">Formosa</span>
+                  <span class="map-region-label label-chaco">Chaco</span>
+                  <span class="map-region-label label-corrientes">Corrientes</span>
+                  <span class="map-region-label label-misiones">Misiones</span>
+                  <span class="map-region-label label-santa">Norte de Santa Fe</span>
+                </div>
+                <div class="map-center">
+                  <b>Corrientes</b>
+                  <small>depósito Av. Maipú</small>
+                </div>
+              </div>
+              <figure class="fleet-figure">
+                <img src="/images/movi-fleet.png" alt="Tres vehículos blancos de la flota de Científica Movi" />
+                <figcaption>Dos Iveco Daily para larga distancia y una Berlingo para reparto en Corrientes capital.</figcaption>
+              </figure>
+            </div>
+            <div class="coverage-blocks">
+              <InfoBlock title="Mayorista">Hospitales, sanatorios, farmacias, laboratorios, municipios y obras sociales en Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe. Entrega con flota propia y cuenta corriente para clientes institucionales.</InfoBlock>
+              <InfoBlock title="Mostrador">Local de venta al público en Córdoba 1491, esquina Rivadavia, Corrientes capital. Ortopedia, rehabilitación, cuidado domiciliario y accesorios para práctica deportiva.</InfoBlock>
+              <InfoBlock title="Capacitaciones">Formaciones y talleres prácticos para profesionales de la salud de la región, dictados por especialistas y basados en evidencia actualizada.</InfoBlock>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <section class="section history" id="nosotros"><div class="container"><SectionIntro kicker="Nuestra historia" title="Una empresa correntina, de una sola familia" copy="Nacimos en 1990 y crecimos sin salir de la ciudad. Cada paso está a la vista en la esquina de Córdoba y Rivadavia." /><div class="timeline">{milestones.map(([year, text], index) => <article class="milestone"><div class={`timeline-bar bar-${index}`}><span>{year}</span></div><p>{text}</p></article>)}</div></div></section>
+      <section class="section history" id="nosotros">
+        <div class="container">
+          <SectionIntro
+            kicker="Nuestra historia"
+            title="Una empresa correntina, de una sola familia"
+            copy="Nacimos en 1990 y crecimos sin salir de la ciudad. Cada paso está a la vista en la esquina de Córdoba y Rivadavia."
+          />
+          <div class="timeline">
+            {milestones.map(([year, text], index) => (
+              <article class="milestone">
+                <div class={`timeline-bar bar-${index}`}>
+                  <span>{year}</span>
+                </div>
+                <p>{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section class="section facilities"><div class="container"><SectionIntro light kicker="Nuestra infraestructura" title="Todo lo que entregamos sale de acá" copy="Infraestructura propia, no alquilada: es lo que nos permite sostener stock y responder a un pedido urgente el mismo día." /><div class="facility-grid">{facilities.map(([title, text]) => <div class="facility"><strong>{title}</strong><p>{text}</p></div>)}</div></div></section>
+      <section class="section facilities">
+        <div class="container">
+          <SectionIntro
+            light
+            kicker="Nuestra infraestructura"
+            title="Todo lo que entregamos sale de acá"
+            copy="Infraestructura propia, no alquilada: es lo que nos permite sostener stock y responder a un pedido urgente el mismo día."
+          />
+          <div class="facility-grid">
+            {facilities.map(([title, text]) => (
+              <div class="facility">
+                <strong>{title}</strong>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <section class="section contact" id="contacto"><div class="container"><SectionIntro kicker="Contacto" title="Pedinos un presupuesto" copy="Escribinos por WhatsApp con el detalle de lo que necesitás y te respondemos en el día durante el horario comercial." /><div class="contact-grid"><div class="contact-details"><ContactRow label="WhatsApp"><a href={whatsappUrl} target="_blank" rel="noreferrer">+54 9 3794 75-7060</a></ContactRow><ContactRow label="Correo"><a href="mailto:marianelamovi@gigared.com">marianelamovi@gigared.com</a></ContactRow><ContactRow label="Dirección">Córdoba 1491, esquina Rivadavia, W3400 Corrientes, Argentina</ContactRow><ContactRow label="Atención">Lunes a viernes · 8:00 a 12:00 y 16:00 a 20:30<br />Sábados y domingos cerrado</ContactRow><a class="button button-navy contact-button" href={whatsappUrl} target="_blank" rel="noreferrer"><WhatsAppIcon /> Escribinos por WhatsApp <ArrowIcon /></a></div><div class="map-placeholder"><span class="map-pin" aria-hidden="true"></span><p>Acá va el mapa de Google<br /><strong>Córdoba 1491, Corrientes</strong></p></div></div></div></section>
+      <section class="section contact" id="contacto">
+        <div class="container">
+          <SectionIntro
+            kicker="Contacto"
+            title="Pedinos un presupuesto"
+            copy="Escribinos por WhatsApp con el detalle de lo que necesitás y te respondemos en el día durante el horario comercial."
+          />
+          <div class="contact-grid">
+            <div class="contact-details">
+              <ContactRow label="WhatsApp">
+                <a href={whatsappUrl} target="_blank" rel="noreferrer">+54 9 3794 75-7060</a>
+              </ContactRow>
+              <ContactRow label="Correo">
+                <a href="mailto:marianelamovi@gigared.com">marianelamovi@gigared.com</a>
+              </ContactRow>
+              <ContactRow label="Dirección">Córdoba 1491, esquina Rivadavia, W3400 Corrientes, Argentina</ContactRow>
+              <ContactRow label="Atención">
+                Lunes a viernes · 8:00 a 12:00 y 16:00 a 20:30<br />
+                Sábados y domingos cerrado
+              </ContactRow>
+              <a class="button button-navy contact-button" href={whatsappUrl} target="_blank" rel="noreferrer">
+                <WhatsAppIcon /> Escribinos por WhatsApp <ArrowIcon />
+              </a>
+            </div>
+            <div class="map-placeholder">
+              <span class="map-pin" aria-hidden="true"></span>
+              <p>
+                Acá va el mapa de Google<br />
+                <strong>Córdoba 1491, Corrientes</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <footer class="site-footer"><div class="container"><div class="footer-top"><div class="brand brand-footer"><span class="brand-mark">MOVI</span><span class="brand-subtitle">Droguería y Científica</span></div><div class="footer-claim">Una empresa correntina al servicio<br />de la salud del Nordeste</div></div><div class="legal-grid"><p><b>Razón social</b>Científica Movi S.R.L.</p><p><b>CUIT</b>33-64930529-9</p><p><b>Domicilio habilitado</b>Córdoba 1491, Corrientes</p><p><b>Legajo ANMAT</b>171</p><p><b>Dirección técnica</b>A completar</p><p><b>Habilitaciones</b>Medicamentos y especialidades medicinales; productos médicos y para diagnóstico in vitro</p></div><div class="footer-bottom"><span>© 2026 Científica Movi S.R.L. Todos los derechos reservados.</span><a href="#inicio">Política de privacidad</a></div></div></footer>
+      <footer class="site-footer">
+        <div class="container">
+          <div class="footer-top">
+            <div class="brand brand-footer">
+              <span class="brand-mark">MOVI</span>
+              <span class="brand-subtitle">Droguería y Científica</span>
+            </div>
+            <div class="footer-claim">Una empresa correntina al servicio<br />de la salud del Nordeste</div>
+          </div>
+          <div class="legal-grid">
+            <p><b>Razón social</b>Científica Movi S.R.L.</p>
+            <p><b>CUIT</b>33-64930529-9</p>
+            <p><b>Domicilio habilitado</b>Córdoba 1491, Corrientes</p>
+            <p><b>Legajo ANMAT</b>171</p>
+            <p><b>Dirección técnica</b>A completar</p>
+            <p><b>Habilitaciones</b>Medicamentos y especialidades medicinales; productos médicos y para diagnóstico in vitro</p>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2026 Científica Movi S.R.L. Todos los derechos reservados.</span>
+            <a href="#inicio">Política de privacidad</a>
+          </div>
+        </div>
+      </footer>
     </main>
 
     <script>
