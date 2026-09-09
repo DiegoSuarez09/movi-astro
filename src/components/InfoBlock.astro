@@ -1,11 +1,19 @@
 ---
 interface Props {
+  index: string
   title: string
+  tags?: string[]
 }
-const { title } = Astro.props
+const { index, title, tags = [] } = Astro.props
 ---
 
 <article class="info-block">
+  <span class="info-block-index" aria-hidden="true">{index}</span>
   <h3>{title}</h3>
   <p><slot /></p>
+  {tags.length > 0 && (
+    <ul class="info-block-tags">
+      {tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+  )}
 </article>

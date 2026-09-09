@@ -40,7 +40,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 
 /* Hero */
 .hero { position: relative; min-height: 670px; color: #fff; background: var(--deep); overflow: hidden; }
-.hero-image, .hero-overlay { position:absolute; inset: 0px; }
+.hero-image, .hero-overlay { position: absolute; inset: 0; }
 /* image-set() usa el webp si el navegador lo soporta (todos los modernos) y cae al PNG como respaldo automático, sin JavaScript. */
 .hero-image { background: image-set(url('/images/movi-building.webp') 1x, url('/images/movi-building.png') 1x) center / cover no-repeat; }
 .hero-overlay { background: linear-gradient(105deg, rgb(0 22 64 / 97%) 0%, rgb(0 32 92 / 88%) 42%, rgb(0 32 92 / 38%) 100%); }
@@ -86,7 +86,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 
 /* Sección: Cobertura (mapa, flota, bloques mayorista/mostrador/capacitaciones) */
 .coverage { background: var(--pale); }
-.coverage-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: start; gap: 80px; }
+.coverage-grid { display: grid; grid-template-columns: 1.05fr .95fr; align-items: stretch; gap: 80px; }
+.coverage-map-col { display: flex; }
 .map-diagram { position: relative; width: min(100%, 470px); aspect-ratio: 1.25; overflow: hidden; }
 .province-map { padding: 12px 10px 8px; background: linear-gradient(145deg, #f8fbff, #e5edf6); border: 1px solid var(--line); box-shadow: 0 18px 36px rgb(0 32 92 / 12%); }
 .province-map-heading { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: baseline; color: var(--navy); }
@@ -108,13 +109,14 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 .map-center { position: absolute; right: 18px; bottom: 16px; display: flex; width: 112px; min-height: 52px; align-items: center; justify-content: center; flex-direction: column; border: 1px solid rgb(255 255 255 / 55%); background: var(--navy); color: #fff; text-align: center; box-shadow: 5px 7px 0 rgb(0 22 64 / 22%); }
 .map-center b { font-family: var(--font-heading), sans-serif; font-size: 13px; }
 .map-center small { max-width: 90px; margin-top: 3px; color: #bcd0e9; font-size: 8px; line-height: 1.25; }
-.fleet-figure { margin: 15px 0 0; }
-.fleet-figure img { display: block; width: 100%; height: 170px; object-fit: cover; }
-.fleet-figure figcaption { margin-top: 11px; color: var(--muted); font-size: 12px; line-height: 1.4; }
-.coverage-blocks { background: #fff; border-top: 2px solid var(--navy); }
-.info-block { padding: 27px 28px 29px 0; border-bottom: 1px solid var(--line); }
-.info-block:last-child { border-bottom: 0; }
-.info-block p { margin: 10px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.coverage-blocks { display: flex; flex-direction: column; gap: 16px; }
+.info-block { position: relative; padding: 30px 28px; background: #fff; border: 1px solid var(--line); overflow: hidden; transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.info-block:hover { border-color: var(--cyan); box-shadow: 0 16px 32px rgb(0 32 92 / 10%); transform: translateY(-2px); }
+.info-block-index { position: absolute; top: 10px; right: 20px; z-index: 0; color: var(--pale); font-family: var(--font-heading), sans-serif; font-size: 64px; font-weight: 700; line-height: 1; letter-spacing: -.04em; }
+.info-block h3 { position: relative; z-index: 1; }
+.info-block p { position: relative; z-index: 1; margin: 10px 0 18px; max-width: 380px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.info-block-tags { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.info-block-tags li { padding: 6px 10px; background: var(--pale); color: var(--navy); font-size: 11px; font-weight: 500; }
 
 /* Sección: Nuestra historia (timeline) */
 .history { padding-bottom: 120px; }
@@ -193,7 +195,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
   .supply-label { margin-top: 25px; }
   .map-diagram { width: 100%; }
   .coverage-blocks { margin-top: 4px; }
-  .info-block { padding-right: 20px; }
+  .info-block { padding: 24px 20px; }
+  .info-block-index { font-size: 48px; }
   .timeline, .facility-grid { grid-template-columns: 1fr; gap: 28px; }
   .timeline { gap: 24px; }
   .milestone { display: grid; grid-template-columns: 86px 1fr; gap: 20px; }

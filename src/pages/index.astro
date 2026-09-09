@@ -138,10 +138,10 @@ const facilities = [
           <SectionIntro
             kicker="Cobertura"
             title="Logística propia, Reposición Inmediata"
-            copy="No dependemos de un centro de distribución en Buenos Aires. Salimos desde Corrientes con vehículos propios, y eso define los tiempos de entrega en toda la región."
+            copy="Mientras otros reciben todo desde un centro de distribución porteño, nosotros salimos directo desde nuestro depósito en Corrientes. Menos escalas, menos demoras, 36 años trabajando así."
           />
           <div class="coverage-grid">
-            <div>
+            <div class="coverage-map-col">
               <div class="map-diagram province-map" aria-label="Mapa tridimensional de cobertura en Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe">
                 <div class="province-map-heading">
                   <span class="map-kicker">Cobertura regional</span>
@@ -175,15 +175,14 @@ const facilities = [
                   <small>depósito Av. Maipú</small>
                 </div>
               </div>
-              <figure class="fleet-figure">
-                <img src="/images/movi-fleet.png" alt="Tres vehículos blancos de la flota de Científica Movi" />
-                <figcaption>Dos Iveco Daily para larga distancia y una Berlingo para reparto en Corrientes capital.</figcaption>
-              </figure>
             </div>
             <div class="coverage-blocks">
-              <InfoBlock title="Mayorista">Hospitales, sanatorios, farmacias, laboratorios, municipios y obras sociales en Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe. Entrega con flota propia y cuenta corriente para clientes institucionales.</InfoBlock>
-              <InfoBlock title="Mostrador">Local de venta al público en Córdoba 1491, esquina Rivadavia, Corrientes capital. Ortopedia, rehabilitación, cuidado domiciliario y accesorios para práctica deportiva.</InfoBlock>
-              <InfoBlock title="Capacitaciones">Formaciones y talleres prácticos para profesionales de la salud de la región, dictados por especialistas y basados en evidencia actualizada.</InfoBlock>
+              <InfoBlock index="01" title="Mayorista institucional" tags={["Cuenta corriente", "Flota propia", "5 provincias"]}>
+                Hospitales, sanatorios, farmacias, laboratorios, municipios y obras sociales de Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe. Entrega con flota propia y cuenta corriente para clientes institucionales.
+              </InfoBlock>
+              <InfoBlock index="02" title="Minorista en Corrientes" tags={["Atención directa", "Ortopedia", "Amplio catálogo"]}>
+                Venta al público en Córdoba 1491, esquina Rivadavia. Ortopedia, rehabilitación, cuidado domiciliario y accesorios para práctica deportiva.
+              </InfoBlock>
             </div>
           </div>
         </div>
@@ -240,8 +239,9 @@ const facilities = [
               <ContactRow label="WhatsApp">
                 <a href={whatsappUrl} target="_blank" rel="noreferrer">+54 9 3794 75-7060</a>
               </ContactRow>
-              <ContactRow label="Correo">
-                <a href="mailto:marianelamovi@gigared.com">marianelamovi@gigared.com</a>
+              <ContactRow label="Teléfono">
+                <a href="tel:+543794434313">3794 434313</a><br />
+                <a href="tel:+543794432869">3794 432869</a>
               </ContactRow>
               <ContactRow label="Dirección">Córdoba 1491, esquina Rivadavia, W3400 Corrientes, Argentina</ContactRow>
               <ContactRow label="Atención">

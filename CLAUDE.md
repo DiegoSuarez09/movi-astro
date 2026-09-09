@@ -4,15 +4,20 @@ Migración de un mockup hecho en v0 (Next.js/React) a Astro estático, para prod
 
 ## Stack y por qué
 
-- Astro puro, sin framework de UI (React/Vue/Svelte). El sitio es una sola página informativa: sin backend, sin formularios, sin CMS — el contacto es un link a WhatsApp/mailto.
+- Astro puro, sin framework de UI (React/Vue/Svelte). El sitio es una sola página informativa: sin backend, sin formularios, sin CMS — el contacto es un link a WhatsApp y números de teléfono (`tel:`), no hay mail de contacto.
 - El único JS del sitio es un `<script>` vanilla al final de `src/pages/index.astro` que abre/cierra el menú móvil. No agregues un framework de UI salvo que aparezca una necesidad real de interactividad compleja — no la había al migrar y probablemente siga sin haberla.
 - CSS plano en `src/styles/global.css`, sin Tailwind ni utility classes — todo con clases propias (`.hero`, `.site-header`, etc.) y variables CSS (`--navy`, `--cyan`, `--muted`, etc.) definidas en `:root`. Seguí ese estilo al agregar CSS nuevo.
 
 ## Estructura
 
 - `src/pages/index.astro`: única página del sitio. El contenido (líneas de productos, hitos históricos, métricas, infraestructura) vive en arrays dentro del frontmatter del archivo — es donde se edita texto.
-- `src/components/`: piezas reutilizables (`WhatsAppIcon.astro`, `ArrowIcon.astro`, `SectionIntro.astro`, `InfoBlock.astro`, `ContactRow.astro`), reflejo de los sub-componentes que tenía el `.tsx` original en v0.
-- `public/images/`: imágenes servidas tal cual, sin optimizar (`movi-building.png` ~1.3MB, `movi-fleet.png` ~1.2MB). Candidatas a convertir a WebP o pasar por `astro:assets` si se optimiza performance más adelante.
+- `src/components/`: piezas reutilizables (`WhatsAppIcon.astro`, `ArrowIcon.astro`, `SectionIntro.astro`, `InfoBlock.astro`, `ContactRow.astro`), reflejo de los sub-componentes que tenía el `.tsx` original en v0. `InfoBlock` acepta `index` (numérito fantasma), `title` y `tags` (chips) además del texto del slot — se usa para las cards "Mayorista"/"Minorista" de la sección Cobertura.
+- `public/images/`: `movi-logo.png` y `movi-logo-white.png` (header y footer), y la foto del hero como `movi-building.webp` con `movi-building.png` de fallback (servidos juntos vía `image-set()` en `global.css` — no borrar el PNG aunque no aparezca en el markup). Favicons (`favicon.ico`, PNGs en varios tamaños, `apple-touch-icon.png`) viven sueltos en `public/`, no en `public/images/`.
+- El mapa de la sección Cobertura (`#cobertura`) es un SVG con los límites reales de Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe, generado a partir del geojson de [alvarezgarcia/provincias-argentinas-geojson](https://github.com/alvarezgarcia/provincias-argentinas-geojson) (proyección simple + simplificación Douglas-Peucker para look bajo-poligonal, Santa Fe recortada a la franja norte). Si hay que tocar los límites, regenerar desde el geojson en vez de editar las coordenadas del `d` a mano.
+
+## Herramientas
+
+- Plugin de Claude Code `frontend-design@claude-plugins-official` instalado (scope user). Es un skill que se activa solo en tareas de frontend para empujar decisiones de diseño más distintivas (tipografía, color, detalle visual) — no agrega dependencias ni frameworks al proyecto, sigue aplicando todo lo de "Stack y por qué" de arriba.
 
 ## Referencia de diseño
 
