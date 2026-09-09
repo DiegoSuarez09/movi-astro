@@ -26,11 +26,10 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
 /* Header */
+.brand-logo { height: 64px; width: auto; display: block; }
 .site-header { position: sticky; top: 0; z-index: 20; background: rgb(255 255 255 / 88%); backdrop-filter: blur(14px); border-bottom: 1px solid rgb(214 222 234 / 80%); }
 .header-inner { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .brand { display: flex; flex-direction: column; line-height: 1; flex-shrink: 0; }
-.brand-mark { color: var(--navy); font-family: var(--font-heading), sans-serif; font-size: 27px; font-weight: 700; letter-spacing: -.08em; }
-.brand-subtitle { color: var(--muted); font-size: 10px; letter-spacing: .04em; margin-top: 5px; }
 .main-nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); margin-left: auto; margin-right: 12px; font-size: 13px; font-weight: 500; color: var(--muted); }
 .main-nav a:hover { color: var(--navy); }
 .header-whatsapp, .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 44px; padding: 10px 17px; border: 1px solid transparent; border-radius: 2px; font-size: 13px; font-weight: 500; transition: background .2s, color .2s, border-color .2s; }
@@ -41,8 +40,9 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 
 /* Hero */
 .hero { position: relative; min-height: 670px; color: #fff; background: var(--deep); overflow: hidden; }
-.hero-image, .hero-overlay { position: absolute; inset: 0; }
-.hero-image { background: url('/images/movi-building.png') center / cover no-repeat; }
+.hero-image, .hero-overlay { position:absolute; inset: 0px; }
+/* image-set() usa el webp si el navegador lo soporta (todos los modernos) y cae al PNG como respaldo automático, sin JavaScript. */
+.hero-image { background: image-set(url('/images/movi-building.webp') 1x, url('/images/movi-building.png') 1x) center / cover no-repeat; }
 .hero-overlay { background: linear-gradient(105deg, rgb(0 22 64 / 97%) 0%, rgb(0 32 92 / 88%) 42%, rgb(0 32 92 / 38%) 100%); }
 .hero-content { position: relative; z-index: 1; padding-top: 116px; padding-bottom: 190px; }
 .eyebrow { margin: 0 0 17px; color: var(--navy); font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
@@ -99,13 +99,12 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 .map-faces path { fill: #9aa7ef; stroke: #5667bd; stroke-width: 2; stroke-linejoin: round; transition: fill .25s ease; }
 .map-faces .figure-corrientes { fill: #8795e7; }
 .map-faces path:hover { fill: var(--cyan); }
-.map-boundary { fill: none; stroke: #4557a8; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; opacity: .95; }
 .map-region-label { position: absolute; z-index: 2; padding: 3px 6px; background: rgb(5 31 72 / 88%); color: #fff; font-size: 9px; line-height: 1.1; white-space: nowrap; box-shadow: 3px 4px 0 rgb(0 32 92 / 14%); }
-.label-formosa { top: 17%; left: 15%; }
-.label-chaco { top: 38%; left: 18%; }
-.label-corrientes { top: 54%; left: 54%; background: var(--cyan); color: var(--navy); }
-.label-misiones { top: 36%; right: 7%; }
-.label-santa { bottom: 8%; left: 35%; }
+.label-formosa { top: 25%; left: 38%; }
+.label-chaco { top: 43%; left: 30%; }
+.label-corrientes { top: 78%; left: 54%; background: var(--cyan); color: var(--navy); }
+.label-misiones { top: 50%; left: 76%; }
+.label-santa { top: 74%; left: 30%; }
 .map-center { position: absolute; right: 18px; bottom: 16px; display: flex; width: 112px; min-height: 52px; align-items: center; justify-content: center; flex-direction: column; border: 1px solid rgb(255 255 255 / 55%); background: var(--navy); color: #fff; text-align: center; box-shadow: 5px 7px 0 rgb(0 22 64 / 22%); }
 .map-center b { font-family: var(--font-heading), sans-serif; font-size: 13px; }
 .map-center small { max-width: 90px; margin-top: 3px; color: #bcd0e9; font-size: 8px; line-height: 1.25; }
@@ -170,6 +169,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-
 @media (max-width: 800px) {
   .container { width: min(100% - 36px, 600px); }
   .header-inner { min-height: 68px; }
+  .brand-logo { height: 48px; }
   .header-whatsapp span { display: none; }
   .header-whatsapp { padding: 10px; }
   .menu-toggle { display: block; }
