@@ -7,6 +7,8 @@ import InfoBlock from '../components/InfoBlock.astro'
 import ContactRow from '../components/ContactRow.astro'
 
 const whatsappUrl = 'https://wa.me/5493794753254'
+const mapsUrl = 'https://www.google.com/maps/place/C%C3%B3rdoba+1491,+W3400+Corrientes'
+const mapsEmbedUrl = 'https://www.google.com/maps?q=C%C3%B3rdoba+1491,+W3400+Corrientes,+Argentina&output=embed'
 
 const supplyLines = [
   {
@@ -27,14 +29,24 @@ const supplyLines = [
 ]
 
 const milestones = [
-  ['1990', 'Los socios Moriondo y Vilar fundan la sociedad en Corrientes capital.'],
-  ['1998', 'La empresa adquiere su local comercial propio, el que sigue funcionando hoy.'],
-  ['2001', 'Tras la separación de los socios, Juan Moriondo toma la totalidad de las cuotas.'],
-  ['2010', 'Marianela Moriondo se suma a la sociedad y encabeza la etapa actual.'],
+  ['1990', 'Juan Moriondo funda Científica Movi.'],
+  ['1998', 'La empresa adquiere su local comercial. '],
+  ['2001', 'Expande su operación a toda la región.'],
+  ['2010', 'Marianela Moriondo se suma al proyecto iniciando un proceso de profesionalización.'],
 ]
 
+// Cada tramo del eje es proporcional a los años reales hasta el próximo hito (el último reutiliza
+// el tramo anterior, solo para darle aire al texto) — así el eje muestra el ritmo real de la historia
+// en vez de espaciar los hitos de forma pareja.
+const milestoneSpans = milestones.map(([year], i) =>
+  i < milestones.length - 1
+    ? Number(milestones[i + 1][0]) - Number(year)
+    : Number(year) - Number(milestones[i - 1][0])
+)
+const timelineColumns = milestoneSpans.map((span) => `minmax(150px, ${span}fr)`).join(' ')
+
 const metrics = [
-  ['36', 'años', 'De trayectoria ininterrumpida en Corrientes'],
+  ['36', 'años', 'De trayectoria ininterrumpida en el nordeste argentino'],
   ['5', 'provincias', 'Corrientes, Chaco, Formosa, Misiones y norte de Santa Fe'],
   ['+1000', 'm²', 'Depósito y oficinas propias'],
   ['+700', 'clientes', 'Que confian en nuestros productos y servicios'],
@@ -92,7 +104,7 @@ const facilities = [
         <div class="container hero-content">
           <p class="eyebrow light">Droguería · Corrientes, Argentina</p>
           <h1>Al servicio de la salud del Nordeste desde <span>1990</span></h1>
-          <p class="hero-copy">Droguería habilitada por ANMAT. Proveemos medicamentos, equipamiento e insumos médicos a hospitales, sanatorios, farmacias y profesionales de cinco provincias, con depósito y flota propios en Corrientes.</p>
+          <p class="hero-copy">Droguería habilitada por ANMAT. Proveemos medicamentos, equipamiento e insumos médicos a hospitales,  clinicas, sanatorios, farmacias y profesionales de la salud de cinco provincias, con depósito y flota propios en Corrientes.</p>
           <div class="hero-actions">
             <a class="button button-cyan" href={whatsappUrl} target="_blank" rel="noreferrer">
               <WhatsAppIcon /> Pedir un presupuesto
@@ -137,8 +149,9 @@ const facilities = [
         <div class="container">
           <SectionIntro
             kicker="Cobertura"
-            title="Logística propia, Reposición Inmediata"
-            copy="Mientras otros reciben todo desde un centro de distribución porteño, nosotros salimos directo desde nuestro depósito en Corrientes. Menos escalas, menos demoras, 36 años trabajando así."
+            title="Logística Propia.<br />Reposición Inmediata."
+            copy="Directo desde nuestros depósitos en Corrientes.
+             Menos escalas, menos demoras, 36 años trabajando así."
           />
           <div class="coverage-grid">
             <div class="coverage-map-col">
@@ -177,10 +190,10 @@ const facilities = [
               </div>
             </div>
             <div class="coverage-blocks">
-              <InfoBlock index="01" title="Mayorista institucional" tags={["Cuenta corriente", "Flota propia", "5 provincias"]}>
-                Hospitales, sanatorios, farmacias, laboratorios, municipios y obras sociales de Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe. Entrega con flota propia y cuenta corriente para clientes institucionales.
+              <InfoBlock index="01" title="Mayorista" tags={["Ejecutivos de Ventas", "Flota propia", "5 provincias"]}>
+                Hospitales, clinicas, sanatorios, farmacias, laboratorios, obras sociales y profesionales de la salud de Corrientes, Chaco, Formosa, Misiones y el norte de Santa Fe.
               </InfoBlock>
-              <InfoBlock index="02" title="Minorista en Corrientes" tags={["Atención directa", "Ortopedia", "Amplio catálogo"]}>
+              <InfoBlock index="02" title="Venta al público" tags={["Atención directa", "Asesoramiento profesional", "Amplio catálogo"]}>
                 Venta al público en Córdoba 1491, esquina Rivadavia. Ortopedia, rehabilitación, cuidado domiciliario y accesorios para práctica deportiva.
               </InfoBlock>
             </div>
@@ -192,15 +205,14 @@ const facilities = [
         <div class="container">
           <SectionIntro
             kicker="Nuestra historia"
-            title="Una empresa correntina, de una sola familia"
-            copy="Nacimos en 1990 y crecimos sin salir de la ciudad. Cada paso está a la vista en la esquina de Córdoba y Rivadavia."
+            title="Nacimos en Corrientes.<br />Hoy llegamos a toda la región."
+            copy="Cada paso está a la vista en la esquina de Córdoba y Rivadavia."
           />
-          <div class="timeline">
+          <div class="timeline" style={`--timeline-cols:${timelineColumns}`}>
             {milestones.map(([year, text], index) => (
-              <article class="milestone">
-                <div class={`timeline-bar bar-${index}`}>
-                  <span>{year}</span>
-                </div>
+              <article class={`milestone milestone-${index}`}>
+                <div class="milestone-bar"></div>
+                <span class="milestone-year">{year}</span>
                 <p>{text}</p>
               </article>
             ))}
@@ -243,7 +255,10 @@ const facilities = [
                 <a href="tel:+543794434313">3794 434313</a><br />
                 <a href="tel:+543794432869">3794 432869</a>
               </ContactRow>
-              <ContactRow label="Dirección">Córdoba 1491, esquina Rivadavia, W3400 Corrientes, Argentina</ContactRow>
+              <ContactRow label="Dirección">
+                Córdoba 1491, esquina Rivadavia, W3400 Corrientes, Argentina<br />
+                <a href={mapsUrl} target="_blank" rel="noreferrer">Cómo llegar</a>
+              </ContactRow>
               <ContactRow label="Atención">
                 Lunes a viernes · 8:00 a 12:00 y 16:00 a 20:30<br />
                 Sábados y domingos cerrado
@@ -252,12 +267,13 @@ const facilities = [
                 <WhatsAppIcon /> Escribinos por WhatsApp <ArrowIcon />
               </a>
             </div>
-            <div class="map-placeholder">
-              <span class="map-pin" aria-hidden="true"></span>
-              <p>
-                Acá va el mapa de Google<br />
-                <strong>Córdoba 1491, Corrientes</strong>
-              </p>
+            <div class="map-embed">
+              <iframe
+                src={mapsEmbedUrl}
+                title="Ubicación de Científica Movi en Córdoba 1491, Corrientes"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
