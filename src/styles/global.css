@@ -721,8 +721,8 @@ button:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--navy);
@@ -821,6 +821,20 @@ button:focus-visible {
   font-size: 11px;
 }
 .footer-bottom a:hover {
+  color: #fff;
+}
+.site-credit {
+  margin-top: 14px;
+  color: rgb(255 255 255 / 35%);
+  font-size: 10px;
+  text-align: center;
+}
+.site-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.site-credit a:hover {
   color: #fff;
 }
 
