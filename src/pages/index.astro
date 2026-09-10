@@ -5,6 +5,7 @@ import ArrowIcon from '../components/ArrowIcon.astro'
 import SectionIntro from '../components/SectionIntro.astro'
 import InfoBlock from '../components/InfoBlock.astro'
 import ContactRow from '../components/ContactRow.astro'
+import SocialLinks from '../components/SocialLinks.astro'
 
 const whatsappUrl = 'https://wa.me/5493794753254'
 const mapsUrl = 'https://www.google.com/maps/place/C%C3%B3rdoba+1491,+W3400+Corrientes'
@@ -57,6 +58,51 @@ const facilities = [
   ['730 m²', 'Depósito propio sobre Av. Maipú, con stock permanente en nuestras tres líneas de productos.'],
   ['Flota Propia', 'Para distribución local y de larga distancia en todo el Nordeste argentino.'],
 ]
+
+// TODO: actualizar cuando se conecte el dominio propio (ver CLAUDE.md → Deploy)
+const siteUrl = 'https://lightblue-eland-599476.hostingersite.com'
+const pageTitle = 'Científica Movi | Droguería al servicio de la salud del Nordeste'
+const pageDescription = 'Droguería habilitada por ANMAT. Medicamentos, equipamiento e insumos médicos desde Corrientes para todo el Nordeste argentino.'
+const ogImage = `${siteUrl}/images/movi-building.webp`
+
+// Coincide con los datos visibles en la sección Contacto — si esos cambian, actualizar también acá.
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Pharmacy',
+  '@id': `${siteUrl}/#organization`,
+  name: 'Científica Movi',
+  description: pageDescription,
+  url: siteUrl,
+  image: ogImage,
+  telephone: '+543794434313',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Córdoba 1491, esquina Rivadavia',
+    addressLocality: 'Corrientes',
+    addressRegion: 'Corrientes',
+    postalCode: 'W3400',
+    addressCountry: 'AR',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '12:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '16:00',
+      closes: '20:30',
+    },
+  ],
+  sameAs: [
+    'https://www.instagram.com/cientificamovi/',
+    'https://www.linkedin.com/company/cientifica-movi-ctes/',
+    'https://www.facebook.com/cientificamovisrl',
+  ],
+}
 ---
 
 <!DOCTYPE html>
@@ -74,8 +120,25 @@ const facilities = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
-    <title>Científica Movi | Droguería al servicio de la salud del Nordeste</title>
-    <meta name="description" content="Droguería habilitada por ANMAT. Medicamentos, equipamiento e insumos médicos desde Corrientes para todo el Nordeste argentino." />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={siteUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Científica Movi" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="576" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(businessSchema)} />
   </head>
   <body>
     <main>
@@ -252,7 +315,8 @@ const facilities = [
                 <a href={whatsappUrl} target="_blank" rel="noreferrer">+54 9 3794 75-7060</a>
               </ContactRow>
               <ContactRow label="Teléfono">
-                <a href="tel:+543794434313">3794 434313</a><br />
+                <a href="tel:+543794434313">3794 434313</a>
+                <span> o </span>
                 <a href="tel:+543794432869">3794 432869</a>
               </ContactRow>
               <ContactRow label="Dirección">
@@ -260,8 +324,10 @@ const facilities = [
                 <a href={mapsUrl} target="_blank" rel="noreferrer">Cómo llegar</a>
               </ContactRow>
               <ContactRow label="Atención">
-                Lunes a viernes · 8:00 a 12:00 y 16:00 a 20:30<br />
-                Sábados y domingos cerrado
+                Lunes a viernes · 8:00 a 12:00 y 16:00 a 20:30
+              </ContactRow>
+              <ContactRow label="Redes">
+                <SocialLinks />
               </ContactRow>
               <a class="button button-navy contact-button" href={whatsappUrl} target="_blank" rel="noreferrer">
                 <WhatsAppIcon /> Escribinos por WhatsApp <ArrowIcon />
@@ -297,6 +363,7 @@ const facilities = [
           </div>
           <div class="footer-bottom">
             <span>© 2026 Científica Movi S.R.L. Todos los derechos reservados.</span>
+            <SocialLinks light />
             <a href="#inicio">Política de privacidad</a>
           </div>
         </div>
