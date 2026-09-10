@@ -14,17 +14,17 @@ const mapsEmbedUrl = 'https://www.google.com/maps?q=C%C3%B3rdoba+1491,+W3400+Cor
 const supplyLines = [
   {
     title: 'Medicamentos',
-    items: ['Ampollas y soluciones inyectables', 'Comprimidos en caja cerrada', 'Jarabes y suspensiones', 'Cremas y ungüentos'],
+    items: ['Ampollas y soluciones inyectables', 'Comprimidos en caja cerrada', 'Jarabes y suspensiones', 'Cremas y ungüentos', 'Soluciones Fisiologicas'],
     label: 'Habilitación ANMAT · tránsito interjurisdiccional',
   },
   {
-    title: 'Equipamiento y cuidado de la salud',
-    items: ['Terapia intensiva: respiradores, monitores, carros de paro', 'Quirófano: mesas, lámparas scialíticas, instrumental', 'Oxigenoterapia y anestesia', 'Ortopedia, rehabilitación y medicina deportiva', 'Diagnóstico: tensiómetros, oxímetros, glucómetros'],
+    title: 'Equipamiento Médico',
+    items: ['Respiradores, monitores, carros de paro', 'Mesas, lámparas scialíticas, instrumental.', 'Oxigenoterapia y anestesia', 'Ortopedia, rehabilitación y medicina deportiva', 'Tensiómetros, oxímetros, glucómetros'],
     label: 'Venta mayorista y minorista',
   },
   {
-    title: 'Insumos médicos y descartables',
-    items: ['Descartables: jeringas, agujas, catéteres, sondas', 'Curaciones: gasas, apósitos, vendas, telas adhesivas', 'Antisépticos y soluciones', 'Esterilización: bolsas, pouch, indicadores, selladoras', 'Protección personal e indumentaria'],
+    title: 'Insumos Médicos',
+    items: ['Jeringas, agujas, catéteres, sondas', 'Gasas, apósitos, vendas, telas adhesivas', 'Antisépticos y soluciones', 'Bolsas, pouch, indicadores, selladoras', 'Protección personal e indumentaria'],
     label: 'Reposición programada para instituciones',
   },
 ]
@@ -48,7 +48,7 @@ const timelineColumns = milestoneSpans.map((span) => `minmax(150px, ${span}fr)`)
 
 const metrics = [
   ['36', 'años', 'De trayectoria ininterrumpida en el nordeste argentino'],
-  ['5', 'provincias', 'Corrientes, Chaco, Formosa, Misiones y norte de Santa Fe'],
+  ['5', 'provincias', 'Corrientes, Chaco, Formosa, Misiones y Norte de Santa Fe'],
   ['+1000', 'm²', 'Depósito y oficinas propias'],
   ['+700', 'clientes', 'Que confian en nuestros productos y servicios'],
 ]
@@ -56,7 +56,7 @@ const metrics = [
 const facilities = [
   ['360 m²', 'Oficinas propias en Córdoba y Rivadavia, sede de administración y coordinación logística.'],
   ['730 m²', 'Depósito propio sobre Av. Maipú, con stock permanente en nuestras tres líneas de productos.'],
-  ['Flota Propia', 'Para distribución local y de larga distancia en todo el Nordeste argentino.'],
+  ['Flota Propia', 'Para distribución local y de larga distancia en todo el Nordeste Argentino.'],
 ]
 
 // TODO: actualizar cuando se conecte el dominio propio (ver CLAUDE.md → Deploy)
@@ -305,8 +305,8 @@ const businessSchema = {
         <div class="container">
           <SectionIntro
             kicker="Contacto"
-            title="Pedinos un presupuesto"
-            copy="Escribinos por WhatsApp con el detalle de lo que necesitás y te respondemos en el día durante el horario comercial."
+            title="¿Consultas?"
+            copy="Estamos para ayudarte."
           />
           <div class="contact-grid">
             <div class="contact-details">
@@ -361,12 +361,12 @@ const businessSchema = {
             <p><b>Habilitaciones</b>Medicamentos y especialidades medicinales; productos médicos y para diagnóstico in vitro</p>
           </div>
           <div class="footer-bottom">
-            <span>© 2026 Científica Movi S.R.L. Todos los derechos reservados.</span>
+            <span>© 2026 Científica Movi S.R.L.</span>
             <SocialLinks light />
             <a href="#inicio">Política de privacidad</a>
           </div>
           <div class="site-credit">
-            Sitio realizado por <a href="https://www.indigoconsulting.com.ar/home" target="_blank" rel="noreferrer">Indigo Consulting</a> · Diego Suárez
+            Sitio realizado por <a href="https://www.indigoconsulting.com.ar/home" target="_blank" rel="noreferrer">Indigo Consulting</a> 
           </div>
         </div>
       </footer>
