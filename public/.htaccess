@@ -1,4 +1,9 @@
 RewriteEngine On
+
+# Un solo salto a la versión canónica (https, sin www), sea cual sea el punto de entrada.
+# Reemplaza al "Forzar SSL" de hPanel: si ese toggle sigue activo, el http->https lo hace
+# antes de llegar acá y para la combinación "http + www" termina en dos saltos en vez de uno.
+RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.cientificamovi\.com\.ar$ [NC]
 RewriteRule ^(.*)$ https://cientificamovi.com.ar/$1 [L,R=301]
 
