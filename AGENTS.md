@@ -24,7 +24,7 @@ El mockup original de v0 (Next.js/React, con exactamente el mismo diseño) vive 
 - Cada `git push` a `master` dispara un build + deploy automático en Hostinger vía su **Node.js App Deployer** ("Deploy Now"): detecta Astro solo, corre `npm run build`, sirve el contenido de `dist/` en `public_html`.
 - **No existe una rama `deploy` separada.** Se probó ese patrón (rama con solo el output compilado + git worktree) pensando que hacía falta, y se descartó al confirmar que Hostinger compila él mismo desde el código fuente en `master`. No reintroducir ese patrón salvo que cambie el mecanismo de hosting.
 - El sitio en `master` con push exitoso queda en producción inmediatamente — no hay ambiente de staging.
-- URL temporal en producción: `https://lightblue-eland-599476.hostingersite.com/`. Dominio propio: aún no conectado.
+- Dominio propio: `https://cientificamovi.com.ar/`, ya conectado y apuntando a Hostinger (la URL temporal `lightblue-eland-599476.hostingersite.com` quedó en desuso).
 
 ## Workflow con Diego
 

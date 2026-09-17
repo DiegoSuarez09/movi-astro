@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.cientificamovi\.com\.ar$ [NC]
+RewriteRule ^(.*)$ https://cientificamovi.com.ar/$1 [L,R=301]
+
+<IfModule mod_headers.c>
+  # Assets con hash en el nombre (Astro los regenera con otro nombre si cambia el contenido)
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  # Imágenes y favicons sin hash: cache más corto, para no dejar una versión vieja pegada
+  # si algún día se reemplaza el archivo con el mismo nombre.
+  <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>

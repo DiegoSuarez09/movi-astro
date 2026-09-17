@@ -59,11 +59,11 @@ const facilities = [
   ['Flota Propia', 'Para distribución local y de larga distancia en todo el Nordeste Argentino.'],
 ]
 
-// TODO: actualizar cuando se conecte el dominio propio (ver CLAUDE.md → Deploy)
-const siteUrl = 'https://lightblue-eland-599476.hostingersite.com'
+const siteUrl = 'https://cientificamovi.com.ar'
 const pageTitle = 'Científica Movi | Droguería al servicio de la salud del Nordeste'
 const pageDescription = 'Droguería habilitada por ANMAT. Medicamentos, equipamiento e insumos médicos desde Corrientes para todo el Nordeste argentino.'
-const ogImage = `${siteUrl}/images/movi-building.webp`
+const ogImage = `${siteUrl}/images/movi-og-image.png`
+const buildingImage = `${siteUrl}/images/movi-building.webp`
 
 // Coincide con los datos visibles en la sección Contacto — si esos cambian, actualizar también acá.
 const businessSchema = {
@@ -73,7 +73,7 @@ const businessSchema = {
   name: 'Científica Movi',
   description: pageDescription,
   url: siteUrl,
-  image: ogImage,
+  image: buildingImage,
   telephone: '+543794434313',
   address: {
     '@type': 'PostalAddress',
@@ -118,7 +118,15 @@ const businessSchema = {
     <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+    </noscript>
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
     <link rel="canonical" href={siteUrl} />
@@ -130,8 +138,8 @@ const businessSchema = {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={siteUrl} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="576" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={pageDescription} />
@@ -161,7 +169,12 @@ const businessSchema = {
       </header>
 
       <section class="hero" id="inicio">
-        <div class="hero-image" role="img" aria-label="Edificio comercial de Científica Movi en Corrientes"></div>
+        <img
+          class="hero-image"
+          src="/images/movi-building.webp"
+          alt="Edificio comercial de Científica Movi en Corrientes"
+          fetchpriority="high"
+        />
         <div class="hero-overlay"></div>
         <div class="container hero-content">
           <p class="eyebrow light">Droguería · Corrientes, Argentina</p>
