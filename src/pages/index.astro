@@ -61,7 +61,7 @@ const facilities = [
 ]
 
 const siteUrl = 'https://cientificamovi.com.ar'
-const pageTitle = 'Científica Movi | Drogueria y Científica | Una Empresa Correntina al Servicio de la Salud del Nordeste'
+const pageTitle = 'Científica Movi | Droguería y Científica | Una Empresa Correntina al Servicio de la Salud del Nordeste'
 const shareTitle = 'Científica Movi | Una Empresa Correntina al Servicio de la Salud del Nordeste'
 const pageDescription = 'Droguería y Científica habilitada por ANMAT. Medicamentos, equipamiento e insumos médicos desde Corrientes para todo el Nordeste argentino.'
 const ogImage = `${siteUrl}/images/movi-og-image.png`
@@ -73,10 +73,47 @@ const businessSchema = {
   '@type': 'Pharmacy',
   '@id': `${siteUrl}/#organization`,
   name: 'Científica Movi',
+  legalName: 'Científica Movi S.R.L.',
+  taxID: '33-64930529-9',
+  foundingDate: '1990',
   description: pageDescription,
   url: siteUrl,
   image: buildingImage,
-  telephone: '+543794434313',
+  logo: `${siteUrl}/images/movi-logo.png`,
+  telephone: '+5493794263780',
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'ventas mayoristas',
+      telephone: '+5493794263780',
+      availableLanguage: 'es',
+      url: whatsappUrl,
+    },
+    {
+      '@type': 'ContactPoint',
+      contactType: 'venta al público',
+      telephone: '+5493794753152',
+      availableLanguage: 'es',
+      url: whatsappminoristaUrl,
+    },
+  ],
+  areaServed: ['Corrientes', 'Chaco', 'Formosa', 'Misiones', 'Norte de Santa Fe'].map((name) => ({
+    '@type': 'AdministrativeArea',
+    name,
+    containedInPlace: { '@type': 'Country', name: 'Argentina' },
+  })),
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Catálogo de Científica Movi',
+    itemListElement: supplyLines.map((line) => ({
+      '@type': 'OfferCatalog',
+      name: line.title,
+      itemListElement: line.items.map((item) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Product', name: item },
+      })),
+    })),
+  },
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Córdoba 1491, esquina Rivadavia',
