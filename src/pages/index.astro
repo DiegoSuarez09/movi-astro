@@ -7,7 +7,8 @@ import InfoBlock from '../components/InfoBlock.astro'
 import ContactRow from '../components/ContactRow.astro'
 import SocialLinks from '../components/SocialLinks.astro'
 
-const whatsappUrl = 'https://wa.me/5493794753254'
+const whatsappUrl = 'https://wa.me/5493794263780'
+const whatsappminoristaUrl='https://wa.me/5493794753152'
 const mapsUrl = 'https://www.google.com/maps/place/C%C3%B3rdoba+1491,+W3400+Corrientes'
 const mapsEmbedUrl = 'https://www.google.com/maps?q=C%C3%B3rdoba+1491,+W3400+Corrientes,+Argentina&output=embed'
 
@@ -18,22 +19,22 @@ const supplyLines = [
     label: 'Habilitación ANMAT · tránsito interjurisdiccional',
   },
   {
-    title: 'Equipamiento Médico',
-    items: ['Respiradores, monitores, carros de paro', 'Mesas, lámparas scialíticas, instrumental.', 'Oxigenoterapia y anestesia', 'Ortopedia, rehabilitación y medicina deportiva', 'Tensiómetros, oxímetros, glucómetros'],
+    title: 'Servicios Médicos',
+    items: ['Anestesia','Quirófano','Terapia','Esterelización','Clínica General'],
     label: 'Venta mayorista y minorista',
   },
   {
-    title: 'Insumos Médicos',
-    items: ['Jeringas, agujas, catéteres, sondas', 'Gasas, apósitos, vendas, telas adhesivas', 'Antisépticos y soluciones', 'Bolsas, pouch, indicadores, selladoras', 'Protección personal e indumentaria'],
+    title: 'Productos Médicos',
+    items: ['Jeringas, agujas, catéteres, sondas', 'Gasas, apósitos, vendas, rehabilitación, ortopedia', 'Antisépticos,soluciones, tensiometros, oximetros', 'Bolsas, pouch, indicadores, selladoras, indumentaria', 'Glucómetros, medicina deportiva, protección personal'],
     label: 'Reposición programada para instituciones',
   },
 ]
 
 const milestones = [
-  ['1990', 'Juan Moriondo funda Científica Movi.'],
+  ['1990', 'Se funda Científica Movi.'],
   ['1998', 'La empresa adquiere su local comercial. '],
   ['2001', 'Expande su operación a toda la región.'],
-  ['2010', 'Marianela Moriondo se suma al proyecto iniciando un proceso de profesionalización.'],
+  ['2010', 'Se inicia un proyecto profesionalización de la empresa.'],
 ]
 
 // Cada tramo del eje es proporcional a los años reales hasta el próximo hito (el último reutiliza
@@ -336,20 +337,22 @@ const businessSchema = {
           />
           <div class="contact-grid">
             <div class="contact-details">
-              <ContactRow label="WhatsApp">
-                <a href={whatsappUrl} target="_blank" rel="noreferrer">+54 9 3794 75-7060</a>
+              <ContactRow label="WhatsApp Mayorista">
+                <a href={whatsappUrl} target="_blank" rel="noreferrer">+54 9 3794-263780</a>
               </ContactRow>
-              <ContactRow label="Teléfono">
-                <a href="tel:+543794434313">3794 434313</a>
-                <span> o </span>
-                <a href="tel:+543794432869">3794 432869</a>
+              <ContactRow label="WhatsApp Minorista">
+                <a href={whatsappminoristaUrl} target="_blank" rel="noreferrer">+54 9 3794-753152</a>
+              
               </ContactRow>
               <ContactRow label="Dirección">
                 Córdoba 1491, esquina Rivadavia, W3400 Corrientes, Argentina<br />
                 <a href={mapsUrl} target="_blank" rel="noreferrer">Cómo llegar</a>
               </ContactRow>
-              <ContactRow label="Atención">
+              <ContactRow label="Horario Local Comercial">
                 Lunes a viernes · 8:00 a 12:00 y 16:00 a 20:30
+              </ContactRow>
+              <ContactRow label="Venta mayorista y administración">
+                Lunes a viernes · 8:00 a 17:30
               </ContactRow>
               <ContactRow label="Seguinos en nuestras redes">
                 <SocialLinks />
@@ -390,9 +393,9 @@ const businessSchema = {
             <p><b>Razón social</b>Científica Movi S.R.L.</p>
             <p><b>CUIT</b>33-64930529-9</p>
             <p><b>Domicilio habilitado</b>Córdoba 1491, Corrientes</p>
-            <p><b>Legajo ANMAT</b>171</p>
+            <p><b>Legajo ANMAT</b>807</p>
             <p><b>Dirección técnica</b>Farmaceutica Natalia Ferrari</p>
-            <p><b>Habilitaciones</b>Medicamentos y especialidades medicinales; productos médicos y para diagnóstico in vitro</p>
+            <p><b>Habilitaciones</b>ANMAT</p>
           </div>
           <div class="footer-bottom">
             <span>© 2026 Científica Movi S.R.L.</span>

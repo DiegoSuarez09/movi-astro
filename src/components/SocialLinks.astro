@@ -1,6 +1,7 @@
 ---
 import IconInstagram from './IconInstagram.astro'
 import IconFacebook from './IconFacebook.astro'
+import IconLinkedIn from './IconLinkedIn.astro'
 
 interface Props {
   light?: boolean
@@ -10,6 +11,7 @@ const { light = false } = Astro.props
 const links = [
   { label: 'Instagram', href: 'https://www.instagram.com/cientificamovi/', Icon: IconInstagram },
   { label: 'Facebook', href: 'https://www.facebook.com/cientificamovisrl', Icon: IconFacebook },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/company/cientifica-movi-ctes/', Icon: IconLinkedIn },
 ]
 ---
 
