@@ -473,33 +473,6 @@ button:focus-visible {
   top: 74%;
   left: 30%;
 }
-.map-center {
-  position: absolute;
-  right: 18px;
-  bottom: 16px;
-  display: flex;
-  width: 112px;
-  min-height: 52px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border: 1px solid rgb(255 255 255 / 55%);
-  background: var(--navy);
-  color: #fff;
-  text-align: center;
-  box-shadow: 5px 7px 0 rgb(0 22 64 / 22%);
-}
-.map-center b {
-  font-family: var(--font-heading), sans-serif;
-  font-size: 13px;
-}
-.map-center small {
-  max-width: 90px;
-  margin-top: 3px;
-  color: #bcd0e9;
-  font-size: 8px;
-  line-height: 1.25;
-}
 .coverage-blocks {
   display: flex;
   flex-direction: column;
